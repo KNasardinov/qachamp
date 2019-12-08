@@ -1,0 +1,41 @@
+version: "3"
+services:
+  tests:
+    container_name: tests
+    build: .
+    ports:
+      - "5000:5000"
+    expose:
+      - 5000
+    depends_on:
+      - champapp
+      - hub
+    links:
+      - champapp
+      - hub
+    environment:
+      WAIT_HOSTS: champapp:8080
+      REMOTE_WEB_DRIVER: hub:4444
+      BROWSER: chrome
+      APPLICATION: champapp:8080
+  champapp:
+    container_name: champapp
+    image: qapropeller/qa-battle:latest
+    expose:
+      - 8080
+  hub:
+    image: selenium/hub:latest
+    ports:
+      - "4444:4444"
+  firefox:
+    image: selenium/node-firefox:latest
+    depends_on:
+      - hub
+    environment:
+      HUB_HOST: hub
+  chrome:
+    image: selenium/node-chrome:latest
+    depends_on:
+      - hub
+    environment:
+      HUB_HOST: hub
