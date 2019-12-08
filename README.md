@@ -13,5 +13,5 @@ To run tests just execute the following command:
 docker-compose up
 
 ## Results will be available after tests execution on your localhost:
-localhost:5000
+localhost:5000 OR 
 0.0.0.0:5000
