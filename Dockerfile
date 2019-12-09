@@ -17,6 +17,5 @@ RUN mkdir -p /usr/src/app
 RUN mkdir -p /usr/src/download
 WORKDIR /usr/src/app
 COPY . /usr/src/app
-RUN ["mvn", "clean", "install"]
 RUN ["chmod", "+x", "/usr/src/app/entrypoint.sh"]
 ENTRYPOINT ["sh", "entrypoint.sh"]
