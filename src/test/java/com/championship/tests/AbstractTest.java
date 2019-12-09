@@ -23,21 +23,9 @@ public abstract class AbstractTest {
         Configuration.fileDownload = PROXY;
         Configuration.proxyEnabled = true;
 
-        //Download folder for chrome
-        Configuration.browserCapabilities.setCapability("download.default_directory",
-                "/Users/knasardinov/download");
-
-        //Download folder for firefox
-        Configuration.browserCapabilities.setCapability("browser.download.folderList", 2);
-        Configuration.browserCapabilities.setCapability("browser.download.dir", "Users/knasardinov/download");
-
         String remoteUrl = System.getenv("REMOTE_WEB_DRIVER");
         if(remoteUrl != null){
             Configuration.remote = "http://" + remoteUrl + "/wd/hub";
-            //Download folder for chrome
-            Configuration.browserCapabilities.setCapability("download.default_directory", "/usr/src/download");
-            //Download folder for firefox
-            Configuration.browserCapabilities.setCapability("browser.download.dir", "/usr/src/download");
         }
         String browser = System.getenv("BROWSER");
         if(browser != null) {
